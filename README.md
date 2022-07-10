@@ -13,7 +13,7 @@ Demonstrated how to handle the SIGTERM(kill -15) signal for graceful shutdown in
 4. Install Docker buildx:<br />
    [Install Docker buildx] - buildx is a Docker CLI plugin for extended build capabilities with BuildKit.
 
-## Deployment & Testing
+## Deployment
 1. Run the following command to build and push docker image to your repository:<br />
      ```sh
      build-n-push-image.sh
