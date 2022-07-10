@@ -1,0 +1,7 @@
+/home/cow/workspace/dotnet6/dotnetasp-sigterm-demo/bin/Release/net6.0/publish/dotnetasp-sigterm-demo
+/home/cow/workspace/dotnet6/dotnetasp-sigterm-demo/bin/Release/net6.0/publish/appsettings.Development.json
+/home/cow/workspace/dotnet6/dotnetasp-sigterm-demo/bin/Release/net6.0/publish/appsettings.json
+/home/cow/workspace/dotnet6/dotnetasp-sigterm-demo/bin/Release/net6.0/publish/dotnetasp-sigterm-demo.dll
+/home/cow/workspace/dotnet6/dotnetasp-sigterm-demo/bin/Release/net6.0/publish/dotnetasp-sigterm-demo.deps.json
+/home/cow/workspace/dotnet6/dotnetasp-sigterm-demo/bin/Release/net6.0/publish/dotnetasp-sigterm-demo.runtimeconfig.json
+/home/cow/workspace/dotnet6/dotnetasp-sigterm-demo/bin/Release/net6.0/publish/dotnetasp-sigterm-demo.pdb

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "dotnetasp-sigterm-demo/1.0.0": {
+        "runtime": {
+          "dotnetasp-sigterm-demo.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "dotnetasp-sigterm-demo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

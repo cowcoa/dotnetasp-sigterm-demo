@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Fq2fXHg3cxgK0UM37wGd0xx8gQMwcDsel9jLawXeOD0=",
+  "Source": "dotnetasp-sigterm-demo",
+  "BasePath": "_content/dotnetasp-sigterm-demo",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

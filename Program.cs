@@ -1,43 +1,41 @@
-var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+var builder = WebApplication.CreateBuilder(args);
+ConfigureServices(builder.Services);
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateTime.Now.AddDays(index),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
-
+app.MapGet("/", () => "Hello World!");
 app.Run();
 
-record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
+void ConfigureServices(IServiceCollection services)
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    // other config...
+    services.AddHostedService<ApplicationLifetimeService>();
+    services.Configure<HostOptions>(opts => opts.ShutdownTimeout = TimeSpan.FromSeconds(45));
+}
+
+public class ApplicationLifetimeService: IHostedService
+{
+    readonly ILogger _logger;
+    readonly IHostApplicationLifetime _applicationLifetime;
+
+    public ApplicationLifetimeService(IHostApplicationLifetime applicationLifetime, ILogger<ApplicationLifetimeService> logger)
+    {
+        _applicationLifetime = applicationLifetime;
+        _logger = logger;
+    }
+
+    public Task StartAsync(CancellationToken cancellationToken)
+    {
+        // register a callback that sleeps for 30 seconds
+        _applicationLifetime.ApplicationStopping.Register(() =>
+        {
+            _logger.LogInformation("SIGTERM received, waiting for 30 seconds");
+            Thread.Sleep(30_000);
+            _logger.LogInformation("Termination delay complete, continuing stopping process");
+        });
+        return Task.CompletedTask;
+    }
+
+    // Required to satisfy interface
+    public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
 }
