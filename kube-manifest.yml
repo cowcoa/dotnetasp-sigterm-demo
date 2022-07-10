@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnetasp-sigterm-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dotnetasp-sigterm-demo
+  template: 
+    metadata:
+      name: dotnetasp-sigterm-demo-pod
+      labels:
+        app: dotnetasp-sigterm-demo         
+    spec:
+      containers:
+        - name: dotnetasp-sigterm-demo-container
+          image: cowcoa/dotnetasp-sigterm-demo:latest
+          ports:
+            - containerPort: 7800
