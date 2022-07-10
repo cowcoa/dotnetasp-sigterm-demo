@@ -18,7 +18,7 @@ Demonstrated how to handle the SIGTERM(kill -15) signal for graceful shutdown in
      ```sh
      build-n-push-image.sh
      ```
-   Or you can use the [pre-built multi-arch image](https://hub.docker.com/repository/docker/cowcoa/dotnetasp-sigterm-demo).
+   Or you can use the [pre-built multi-arch image](https://hub.docker.com/r/cowcoa/dotnetasp-sigterm-demo).
 2. Run the following command to deploy the pre-built multi-arch image to your K8s cluster:<br />
      ```sh
      kubectl apply -f kube-manifest.yml
