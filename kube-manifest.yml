@@ -13,6 +13,7 @@ spec:
       labels:
         app: dotnetasp-sigterm-demo         
     spec:
+      terminationGracePeriodSeconds: 60
       containers:
         - name: dotnetasp-sigterm-demo-container
           image: cowcoa/dotnetasp-sigterm-demo:latest

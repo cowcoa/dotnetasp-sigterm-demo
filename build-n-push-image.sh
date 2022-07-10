@@ -31,8 +31,10 @@ pushToEcr()
 
     # app's image repository.
     local aspdotnet_repo="dotnetasp-sigterm-demo"
+    # app's image repository host.
+    local aspdotnet_repo_host=$aws_account_id.dkr.ecr.$deployment_region.amazonaws.com
     # app's image repository URI.
-    local aspdotnet_repo_uri=$aws_account_id.dkr.ecr.$deployment_region.amazonaws.com/$aspdotnet_repo
+    local aspdotnet_repo_uri=$aspdotnet_repo_host/$aspdotnet_repo
 
     aws ecr describe-repositories --repository-names $aspdotnet_repo --region $deployment_region &> /dev/null
     local result=$?
@@ -42,8 +44,7 @@ pushToEcr()
     fi
 
     echo "Login to ECR..."
-    local DOCKER_LOGIN_CMD=$(aws ecr get-login --no-include-email --region $deployment_region)
-    eval "${DOCKER_LOGIN_CMD}"
+    aws ecr get-login-password --region $deployment_region | docker login --username AWS --password-stdin $aspdotnet_repo_host
 
     echo "Build docker image..."
     local image_tag="$(echo $(date '+%Y.%m.%d.%H%M%S' -d '+8 hours'))"
