@@ -25,7 +25,7 @@ Demonstrated how to handle the SIGTERM(kill -15) signal for graceful shutdown in
      ```
 
 ## Testing
-1. The kube-manifest.yml will create a Deployment with 2 Pods, you can change the spec.replicas from 2 to 1 and re-deploy the manifest.
+1. The [kube-manifest.yml](kube-manifest.yml) will create a Deployment with 2 Pods, you can change the spec.replicas from 2 to 1 and re-deploy the manifest.
 2. K8s will choose 1 out of 2 Pods to stop, you can run "kubectl logs" to observe the logs of the terminating Pod.
 3. Our .NETASP app will handle the SIGTERM signal and wait 30s before exiting the process.
 4. You can also run the app locally and do a "kill -15" to simulate this.
